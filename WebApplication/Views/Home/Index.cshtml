@@ -1,0 +1,78 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@{
+    ViewData["Title"] = "Home Page";
+}
+@model IEnumerable<File>
+
+
+@*Only show uploded files if the user is logged in*@
+@if (SignInManager.IsSignedIn(User))
+{
+    <div class="text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-3">
+                    <p><b>Your Files</b></p>
+                    @*Check if the User has any files uploaded*@
+
+                    <div class="list-group">
+                        @foreach (var obj in Model)
+                        {
+                            <li class="list-group-item" onclick="showData(this, @obj.Id)">@obj.Name</li>
+                        }
+                    </div>
+
+                </div>
+                <div id="metadata" class="col">
+                    <p><b>Data</b></p>
+                    <table>
+                        <tbody>
+                            @foreach (var obj in Model)
+                            {
+                                <tr class="@obj.Id" style="display: none">
+                                    <td><span>Created On:</span></td>
+                                    <td>@obj.Created</td>
+                                </tr>
+                                <tr class="@obj.Id" style="display: none">
+                                    <td><span>File Info:</span></td>
+                                    <td>@obj.Name</td>
+                                </tr>
+                                <tr class="@obj.Id" style="display: none">
+                                    <td><span>Size:</span></td>
+                                    <td>@obj.Size</td>
+                                </tr>
+                                <tr class="@obj.Id" style="display: none">
+                                    <td><span>Download:</span></td>
+                                    <td><a href="~/Upload/Download?path=@obj.Path">Download</a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="text-center">
+        <h1>Welcome</h1>
+        <p>Login or Register</p>
+    </div>
+}
+
+<script>
+    function showData(e, id) {
+        var elements = document.getElementsByTagName("tr");
+        for (var i = 0; i < elements.length; i++) {
+            elements[i].style.display = "none";
+        }
+        var ielements = document.getElementsByClassName(id);
+        for (var i = 0; i < ielements.length; i++) {
+            ielements[i].style.display = "block";
+        }
+    }
+</script>
+
