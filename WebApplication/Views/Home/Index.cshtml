@@ -27,23 +27,23 @@
                 </div>
                 <div id="metadata" class="col">
                     <p><b>Data</b></p>
-                    <table>
+                    <table class="d-flex flex-column justify-content-center align-items-center">
                         <tbody>
                             @foreach (var obj in Model)
                             {
-                                <tr class="@obj.Id" style="display: none">
+                                <tr class="@obj.Id mb-2" style="display: none">
                                     <td><span>Created On:</span></td>
                                     <td>@obj.Created</td>
                                 </tr>
-                                <tr class="@obj.Id" style="display: none">
+                                <tr class="@obj.Id mb-2" style="display: none">
                                     <td><span>File Info:</span></td>
                                     <td>@obj.Name</td>
                                 </tr>
-                                <tr class="@obj.Id" style="display: none">
+                                <tr class="@obj.Id mb-2" style="display: none">
                                     <td><span>Size:</span></td>
                                     <td>@obj.Size</td>
                                 </tr>
-                                <tr class="@obj.Id" style="display: none">
+                                <tr class="@obj.Id mb-2" style="display: none">
                                     <td><span>Download:</span></td>
                                     <td><a href="~/Upload/Download?path=@obj.Path">Download</a></td>
                                 </tr>
@@ -58,8 +58,16 @@
 else
 {
     <div class="text-center">
-        <h1>Welcome</h1>
-        <p>Login or Register</p>
+        <body style="background-color:silver;"></body>
+        <h1>Welcome to the web application</h1>
+        
+        <h2>Login or Register</h2>
+        
+        <br>
+        <br>
+        
+        <h5>Team Memebers</h5>
+        <h5>Aarush Saxena , Aditya Ojha , Aniket</h5>
     </div>
 }
 

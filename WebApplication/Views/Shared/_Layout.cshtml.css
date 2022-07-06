@@ -44,9 +44,9 @@ button.accept-policy {
 }
 
 .footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px;
+    bottom: 0px !important;
+    position: absolute !important;
+    padding: 20px;
+    width: 100%;
+    display:flex;
 }
